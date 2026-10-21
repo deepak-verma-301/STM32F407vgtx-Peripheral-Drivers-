@@ -54,10 +54,10 @@ void gpio_toggle(GPIO_TypeDef *port, uint8_t pin){
     port->ODR ^= 1 << pin;
 }
 void gpio_af(GPIO_TypeDef *port, uint8_t pin, uint8_t af){
-    if(af <= 7){
+    if(pin <= 7){
         port->AFR[0] |= af << (pin*4);
     }
     else{
-        port->AFR[1] |= af << (pin*4);
+        port->AFR[1] |= af << (pin-8)*4;
     }
 }
