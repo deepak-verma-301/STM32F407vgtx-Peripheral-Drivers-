@@ -40,6 +40,16 @@ void gpio_write(GPIO_TypeDef *port, uint8_t pin, bool state){
     }
 }
 
+
+void gpio_speed(GPIO_TypeDef *port, uint8_t speed, uint8_t pin){
+    port->OSPEEDR |= speed << (pin*2);
+
+}
+
+void gpio_pupd(GPIO_TypeDef *port, uint8_t config, uint8_t pin){
+    port->PUPDR |= config << (pin*2);
+}
+
 bool gpio_read(GPIO_TypeDef *port, uint8_t pin){
         return (port->IDR & (1<<pin)); 
 }
