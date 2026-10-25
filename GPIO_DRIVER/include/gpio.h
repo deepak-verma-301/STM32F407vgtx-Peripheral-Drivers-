@@ -31,16 +31,26 @@
 #define AF14     14U
 #define AF15     15U
 
+#define L      0U
+#define M      1U
+#define H      2U
+#define VH     3U
+
+#define NOPUPD  0U
+#define PU      1U
+#define PD      2U
 
 void gpio_init(GPIO_TypeDef *port);
 void gpio_mode(GPIO_TypeDef *port, uint8_t mode, uint8_t pin);
+void gpio_speed(GPIO_TypeDef *port, uint8_t speed, uint8_t pin);
+void gpio_pupd(GPIO_TypeDef port, uint8_t config, uint8_t pin);
 void gpio_write(GPIO_TypeDef *port, uint8_t pin, bool state);
 bool gpio_read(GPIO_TypeDef *port, uint8_t pin);
 void gpio_set(GPIO_TypeDef *port, uint8_t pin);
 void gpio_reset(GPIO_TypeDef *port, uint8_t pin);
 void gpio_toggle(GPIO_TypeDef *port, uint8_t pin);
-void gpio_af(GPIO_TypeDef *port, uint8_t pin, uint8_t af);
-
+void gpio_af(GPIO_TypeDef *port, uint8_t af, uint8_t pin);
+void gpio_deinit(GPIO_TypeDef *port);
 
 
 #endif
